@@ -4,14 +4,16 @@ Puts Media files to certain folders from their media tags, for example, if the s
 
 # Usage:
 
-Place music in an folder.
+1: Place music in an folder.
 
-Copy path.
+2: Copy path.
 
-Paste in program.
+3: Paste in program.
 
-Let the program do the magic.
+4: Let the program do the magic.
 
+
+Note: If the Song has no media tags or the file isnt media at all, itll store it in UNKNOWN/UNKNOWN.
 
 
 # Bugs:
