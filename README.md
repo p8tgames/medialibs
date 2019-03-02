@@ -20,6 +20,8 @@ Note: If the Song has no media tags or the file isnt media at all, itll store it
 
 -Shows permission denied errors, but theyre safe and dont do anything.
 
+-Only OGG and FLAC supported at this moment, MP3 and more coming soon...?
+
 # Requirements:
 
 -Mutagen
