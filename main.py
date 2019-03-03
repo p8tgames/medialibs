@@ -1,10 +1,24 @@
 import mutagen
 import os
+import sys
 
-print("Permission denied errors are normal here, they show up when an folder already exists. They can be safely ignored. If you found a fix to hide this, please make a PR.")
-print("Do not use Windows' style of paths! Instead use /, for example (if file is on your windows disk) /path/to/file/")
+print(sys.argv)
+launchargs = sys.argv
+
+if len(launchargs)==1:
+    launchargs.append("")
+elif len(launchargs)==2:
+    launchargs.append("--normal")
+
+if launchargs[1]=="":
+    print("Permission denied errors are normal here, they show up when an folder already exists. They can be safely ignored. If you found a fix to hide this, please make a PR.")
+    print("Do not use Windows' style of paths! Instead use /, for example (if file is on your windows disk) /path/to/file/")
+
 def start():
-    sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored at root of save dir): ")
+    if launchargs[1]!="":
+        sourcedir = launchargs[1]
+    else:
+        sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored at root of save dir): ")
     if sourcedir.endswith("/"):
         pass
     else:
@@ -40,23 +54,26 @@ def start():
         print(Exception)
         start()
     listoftracks = len(sourcedir)
-    print("Are you sure you want to move these files listed above?")
-    inp2 = input("Enter 'YES' to proceed.")
-    if inp2 == "YES":
-        oeufstart(musiclistdir, listoftracks, sourcedir)
-    elif inp2 == "yes":
-        print("DO NOT TYPE IT IN LOWERCASE IDIOT")
-    elif inp2 == "y":
-        print("DONT TYPE y ONLY YOU LAZY IDIOT")
+    if launchargs[1]=="":
+        print("Are you sure you want to move these files listed above?")
+        inp2 = input("Enter 'YES' to proceed.")
+        if inp2 == "YES":
+            oeufstart(musiclistdir, listoftracks, sourcedir)
+        elif inp2 == "yes":
+            print("DO NOT TYPE IT IN LOWERCASE IDIOT")
+        elif inp2 == "y":
+            print("DONT TYPE y ONLY YOU LAZY IDIOT")
+        else:
+            print("LMAO NERD DIDNT TYPE YES")
     else:
-        print("LMAO NERD DIDNT TYPE YES")
+        oeufstart(musiclistdir, listoftracks, sourcedir)
 
 def oeufstart(filedir, dilenr, direc):
     print("Passed succ")
-    print(filedir)
-    print(dilenr)
+    #print(filedir)
+    #print(dilenr)
     for ded in filedir:
-        if "." not in ded: 
+        if "." not in ded:
             filedir.remove(ded)
             pass
         else:
@@ -74,11 +91,13 @@ def oeufstart(filedir, dilenr, direc):
                 os.rename(direc + ded, gonnamake + ded)
                 #os.makedirs(direc + "lol") was fro debugging
             except FileExistsError:
-                print("Skipped {} as it already existed.".format(gonnamake))
+                if launchargs[2]=="--verbose":
+                    print("Skipped {} as it already existed.".format(gonnamake))
                 try:
                     os.rename(direc + ded, gonnamake + ded)
                 except Exception:
-                    print("Skipped {} as it already existed".format(ded))
+                    if launchargs[2] == "--verbose":
+                        print("Skipped {} as it already existed".format(ded))
 
 
 start()
