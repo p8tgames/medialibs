@@ -2,13 +2,16 @@ import mutagen
 import os
 import sys
 
-print(sys.argv)
+
 launchargs = sys.argv
 
 if len(launchargs)==1:
     launchargs.append("")
 elif len(launchargs)==2:
     launchargs.append("--normal")
+elif len(launchargs)==3:
+	if launchargs[2]=="--verbose":
+		print(sys.argv)
 
 if launchargs[1]=="":
     print("Permission denied errors are normal here, they show up when an folder already exists. They can be safely ignored. If you found a fix to hide this, please make a PR.")
