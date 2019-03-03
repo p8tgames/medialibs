@@ -18,7 +18,7 @@ Note: If the Song has no media tags or the file isnt media at all, itll store it
 
 # Bugs:
 
--Shows permission denied errors, but theyre safe and dont do anything.
+~~-Shows permission denied errors, but theyre safe and dont do anything.-~~ Fixed!
 
 -Only OGG and FLAC supported at this moment, MP3 and more coming soon...?
 
