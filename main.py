@@ -10,12 +10,15 @@ if len(launchargs)==1:
 elif len(launchargs)==2:
     launchargs.append("--normal")
 elif len(launchargs)==3:
-	if launchargs[2]=="--verbose":
-		print(sys.argv)
+    if launchargs[2]=="--verbose":
+        print(sys.argv)
 
 if launchargs[1]=="":
     print("Permission denied errors are normal here, they show up when an folder already exists. They can be safely ignored. If you found a fix to hide this, please make a PR.")
     print("Do not use Windows' style of paths! Instead use /, for example (if file is on your windows disk) /path/to/file/")
+elif launchargs[1]=="--verbose":
+    ok = input("You're supposed to put this option as the third, not as second. The path belongs here.")
+    exit()
 
 def start():
     if launchargs[1]!="":
