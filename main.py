@@ -5,6 +5,10 @@ print("Permission denied errors are normal here, they show up when an folder alr
 
 def start():
     sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored at root of save dir): ")
+    if sourcedir.endswith("/"):
+        pass
+    else:
+        sourcedir = sourcedir + "/"
     try:
         musiclistdir = os.listdir(sourcedir)
         print("Going to process these files: ")
