@@ -2,7 +2,7 @@ import mutagen
 import os
 
 print("Permission denied errors are normal here, they show up when an folder already exists. They can be safely ignored. If you found a fix to hide this, please make a PR.")
-
+print("Do not use Windows' style of paths! Instead use /, for example (if file is on your windows disk) /path/to/file/")
 def start():
     sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored at root of save dir): ")
     if sourcedir.endswith("/"):
@@ -56,8 +56,8 @@ def oeufstart(filedir, dilenr, direc):
     print(filedir)
     print(dilenr)
     for ded in filedir:
-        if ""=="1": #this is an leftover from debugging, it may seem useless. and youre right it is. im just too lazy to remove this
-            #print("1") debugging crap
+        if "." not in ded: 
+            filedir.remove(ded)
             pass
         else:
             #print("2")debug crap
