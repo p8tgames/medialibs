@@ -47,8 +47,8 @@ def start():
                         albumname = file.album
                     except Exception:
                         print("I wasn't able to fetch tags. Ill declare them as UNKNOWN here")
-                        artistname = ["UNKNOWN"]
-                        albumname = ["UNKNOWN"]
+                        artistname = "UNKNOWN"
+                        albumname = "UNKNOWN"
                     print('{} by {}'.format(albumname, artistname))
             except PermissionError:
                 print("Folder exists, skipping...")
@@ -88,8 +88,8 @@ def oeufstart(filedir, dilenr, direc):
                 artistname = file.artist
                 albumname = file.album
             except Exception:
-                artistname = ["UNKNOWN"]
-                albumname = ["UNKNOWN"]
+                artistname = "UNKNOWN"
+                albumname = "UNKNOWN"
             albumname2 = albumname
             artistname2 = artistname
             if ":" or "/" in albumname2 or artistname2:
