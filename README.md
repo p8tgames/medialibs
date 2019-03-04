@@ -3,6 +3,9 @@ Puts Media files to certain folders from their media tags, for example, if the s
 
 
 # Usage:
+-1: Install all requirements. Python can be get [here](https://python.org/) and you can install TinyTag using pip3.
+
+0: Install tinytag using `pip3 install tinytag`
 
 1: Place music in an folder.
 
@@ -18,12 +21,12 @@ Note: If the Song has no media tags or the file isnt media at all, itll store it
 
 # Bugs:
 
-~~-Shows permission denied errors, but theyre safe and dont do anything.-~~ Fixed!
+~~-Shows permission denied errors, but theyre safe and dont do anything.~~ Fixed!
 
--Only OGG and FLAC supported at this moment, MP3 and more coming soon...?
+~~-Only OGG and FLAC supported at this moment, MP3 and more coming soon...?~~ Support added!
 
 # Requirements:
 
--Mutagen
+~~-Mutagen~~ we moved to tinytag!
 
 -Python 3

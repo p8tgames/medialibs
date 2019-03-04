@@ -1,7 +1,6 @@
-import mutagen
+from tinytag import TinyTag, TinyTagException
 import os
 import sys
-
 
 launchargs = sys.argv
 
@@ -24,7 +23,7 @@ def start():
     if launchargs[1]!="":
         sourcedir = launchargs[1]
     else:
-        sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored at root of save dir): ")
+        sourcedir = input("Enter the Source Directory of your Music files (if folder contains File without Media Tags, itll get stored as UNKNWON): ")
     if sourcedir.endswith("/"):
         pass
     else:
@@ -42,15 +41,15 @@ def start():
                     print("---------------------------------------")
                     print("File Name: {}".format(abc))
                     print(sourcedir+abc)
-                    file = mutagen.File(sourcedir+abc)
+                    file = TinyTag.get(sourcedir+abc)
                     try:
-                        artistname = file['artist']
-                        albumname = file['album']
+                        artistname = file.artist
+                        albumname = file.album
                     except Exception:
-                        print("I wasn't able to fetch tags. Ill declare them as UNKNOWN here.")
+                        print("I wasn't able to fetch tags. Ill declare them as UNKNOWN here")
                         artistname = ["UNKNOWN"]
                         albumname = ["UNKNOWN"]
-                    print('{} by {}'.format(albumname[0], artistname[0]))
+                    print('{} by {}'.format(albumname, artistname))
             except PermissionError:
                 print("Folder exists, skipping...")
                 musiclistdir.remove(abc)
@@ -84,23 +83,25 @@ def oeufstart(filedir, dilenr, direc):
             pass
         else:
             #print("2")debug crap
-            file = mutagen.File(direc + ded)
+            file = TinyTag.get(direc + ded)
             try:
-                artistname = file['artist']
-                albumname = file['album']
+                artistname = file.artist
+                albumname = file.album
             except Exception:
                 artistname = ["UNKNOWN"]
                 albumname = ["UNKNOWN"]
-            albumname2 = albumname[0]
-            artistname2 = artistname[0]
-            if "/" in albumname2:
-                albumname2 = albumname2.replace("/", "-")
-            elif "/" in artistname2:
-                artistname2 = artistname2.replace("/", "-")
-            elif ":" in albumname2:
-                albumname2 = albumname2.replace("", "-")
-            elif ":" in artistname2:
-                artistname2 = artistname2.replace(":", "-")
+            albumname2 = albumname
+            artistname2 = artistname
+            if ":" or "/" in albumname2 or artistname2:
+
+                if "/" in albumname2:
+                    albumname2 = albumname2.replace("/", "-")
+                elif "/" in artistname2:
+                    artistname2 = artistname2.replace("/", "-")
+                elif ":" in albumname2:
+                    albumname2 = albumname2.replace("", "-")
+                elif ":" in artistname2:
+                    artistname2 = artistname2.replace(":", "-")
 
             gonnamake = direc + artistname2 + "/" + albumname2 + "/"
             try:
@@ -116,6 +117,7 @@ def oeufstart(filedir, dilenr, direc):
                 except Exception:
                     if launchargs[2] == "--verbose":
                         print("Skipped {} as it already existed".format(ded))
-
+        if launchargs[2]=="--verbose":
+            print("Succesfully moved {} to {}!".format(direc + ded, gonnamake + ded))
 
 start()
