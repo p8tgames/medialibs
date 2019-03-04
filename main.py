@@ -91,8 +91,20 @@ def oeufstart(filedir, dilenr, direc):
             except Exception:
                 artistname = ["UNKNOWN"]
                 albumname = ["UNKNOWN"]
-            gonnamake = direc + artistname[0] + "/" + albumname[0] + "/"
+            albumname2 = albumname[0]
+            artistname2 = artistname[0]
+            if "/" in albumname2:
+                albumname2 = albumname2.replace("/", "-")
+            elif "/" in artistname2:
+                artistname2 = artistname2.replace("/", "-")
+            elif ":" in albumname2:
+                albumname2 = albumname2.replace("", "-")
+            elif ":" in artistname2:
+                artistname2 = artistname2.replace(":", "-")
+
+            gonnamake = direc + artistname2 + "/" + albumname2 + "/"
             try:
+
                 os.makedirs(gonnamake)
                 os.rename(direc + ded, gonnamake + ded)
                 #os.makedirs(direc + "lol") was fro debugging
