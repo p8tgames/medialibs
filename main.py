@@ -35,7 +35,6 @@ def start():
             try:
                 if os.path.isdir(sourcedir + abc):
                     musiclistdir.remove(abc)
-                    pass
                 else:
 
                     print("---------------------------------------")
