@@ -1,4 +1,4 @@
-from tinytag import TinyTag, TinyTagException
+from tinytag import TinyTag
 import os
 import sys
 
@@ -80,7 +80,6 @@ def oeufstart(filedir, dilenr, direc):
     for ded in filedir:
         if "." not in ded:
             filedir.remove(ded)
-            pass
         else:
             #print("2")debug crap
             file = TinyTag.get(direc + ded)
