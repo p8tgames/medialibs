@@ -1,14 +1,12 @@
 # medialibs
 Puts Media files to certain folders from their media tags, for example, if the song's creator is foo and the album name bar itll store all of its songs in /foo/bar/Song1.flac.
 
-
 ## Getting started
 0: Download this program/script 
 
 1: Install all requirements. Python can be get [here](https://python.org/) and you can install TinyTag using pip3.
 
 2: Install tinytag using `pip3 install tinytag`
-
 
 ## Usage
 1: Place music in an folder.
@@ -34,14 +32,13 @@ Puts Media files to certain folders from their media tags, for example, if the s
 
 Note: If the Song has no media tags or the file isnt media at all, itll store it in UNKNOWN/UNKNOWN.
 
-
 ## Bugs
 
 ~~-Shows permission denied errors, but theyre safe and dont do anything.~~ Fixed!
 
 ~~-Only OGG and FLAC supported at this moment, MP3 and more coming soon...?~~ Support added!
 
-## Requirements:
+## Requirements
 
 ~~-Mutagen~~ we moved to tinytag!
 
