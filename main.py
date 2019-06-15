@@ -53,7 +53,6 @@ def start():
             except PermissionError:
                 print("Folder exists, skipping...")
                 musiclistdir.remove(abc)
-                pass
     except NotADirectoryError:
         print("The program could not find the dir you specified. Is it entered correctly?????????")
         print(Exception)
