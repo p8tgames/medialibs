@@ -1,4 +1,6 @@
 # medialibs
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a35215c5d1e54aa8b69c9ce1234e6584)](https://www.codacy.com/app/p8tgames/medialibs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=p8tgames/medialibs&amp;utm_campaign=Badge_Grade)
+
 Puts Media files to certain folders from their media tags, for example, if the song's creator is foo and the album name bar itll store all of its songs in /foo/bar/Song1.flac.
 
 ## Getting started
